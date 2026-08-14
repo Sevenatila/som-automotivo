@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   setupSlider();
   setupFAQ();
   setupCountdown();
-  setupSocialProof();
 });
 
 // ==========================================================================
@@ -108,40 +107,3 @@ function setupCountdown() {
   }, 1000);
 }
 
-// ==========================================================================
-// NOTIFICAÇÕES DE COMPRA RECENTE (PROVA SOCIAL)
-// ==========================================================================
-const buyers = [
-  "Fernando S. (Belo Horizonte - MG)",
-  "Thiago M. (São Paulo - SP)",
-  "Carlos R. (Curitiba - PR)",
-  "Rodrigo P. (Goiânia - GO)",
-  "Marcos A. (Campinas - SP)",
-  "Lucas B. (Rio de Janeiro - RJ)",
-  "Gabriel D. (Brasília - DF)",
-  "Bruno F. (Porto Alegre - RS)",
-  "Felipe N. (Salvador - BA)",
-  "Gustavo L. (Fortaleza - CE)"
-];
-
-function setupSocialProof() {
-  const toast = document.getElementById("social-toast");
-  const nameEl = document.getElementById("toast-user-name");
-  if (!toast || !nameEl) return;
-
-  function showToast() {
-    const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
-    nameEl.textContent = randomBuyer;
-    toast.classList.add("show");
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 5000);
-  }
-
-  // Primeiro aviso após 5 segundos
-  setTimeout(showToast, 5000);
-
-  // Repete a cada 18 segundos
-  setInterval(showToast, 18000);
-}
